@@ -1,6 +1,6 @@
 # Important Game Settings
 SPEED = 50  # 30
-CAR_VELOCITY = 5
+CAR_VELOCITY = 8
 TIME_DELAY = 30
 CAR_PROTRUDE = 10  # Defines how many pixels of car can protrude over the way
 
@@ -13,6 +13,9 @@ MAP_LENGTH = 100  # When "car" is approaching to end of map, it's being extended
 SAFE_EXCESS = 30  # Needed to deal with list index out of range problem
 # (Because of drawRoad() function is called that fast when run, so map can't be generated fast enough to extend road
 # map)
+
+MAX_LEFT_DEVIATION_OF_ROAD = -350
+MAX_RIGHT_DEVIATION_OF_ROAD = 340
 
 # Graphics
 

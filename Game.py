@@ -1,14 +1,14 @@
 import pygame
 from Car import Car
 from Road import Road
-from ScoreBoard import ScoreBoard
+from ScoreBoard import Score
 import color
 import constants as c
 
 
 class Game:
     window = pygame.display.set_mode((c.WINDOW_HEIGHT, c.WINDOW_LENGTH))
-    score_board = ScoreBoard()
+    score_board = Score()
 
     def displayThatsOver(self, score):
         self.window.fill(color.WHITE)
@@ -39,9 +39,10 @@ class Game:
 
     def Run(self):
 
-        road = Road()
+        self.score_board.setScore(0)
+        road = Road(self.score_board)
         car = Car()
-        self.score_board.score = 0
+
         run = True
         while run:
             for event in pygame.event.get():
@@ -57,7 +58,7 @@ class Game:
             road.drawRoad(car)
 
             if road.outOfTheRoad(car):
-                return self.Over(self.score_board.score)
+                return self.Over(self.score_board.getScore())
 
             self.window.blit(car.display(), (car.x, car.y))
 

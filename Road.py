@@ -6,11 +6,11 @@ from MapGenerator import MapGenerator
 
 class Road:
 
-    def __init__(self):
+    def __init__(self, score):
         self.ws = [WaySegment(c.WAY_LENGTH * i, 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
         self.obstacle = Obstacle()
 
-        self.map = MapGenerator()
+        self.map = MapGenerator(score)
         self.map.generate(start_point=0)
 
     def drawRoad(self, car):
@@ -21,8 +21,8 @@ class Road:
             self.ws[i].y += c.SPEED
 
         #todo drawing obstacles
-            self.obstacle.display()
-            self.obstacle.y += 0.5  # temporary
+            # self.obstacle.display()
+            # self.obstacle.y += 0.5  # temporary
 
     def outOfTheRoad(self, car):
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
