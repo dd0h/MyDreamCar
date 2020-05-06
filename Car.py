@@ -1,12 +1,13 @@
 import pygame
+from constants import *
 
 
 class Car:
-    image = 'MyDreamCar/img/car1.png'
+    image = 'MyDreamCar/img/car7.png'
     x = 500
     y = 390
-    width = 40
-    length = 102
+    width = CAR_WIDTH
+    length = CAR_LENGTH
 
     def display(self):
         return pygame.image.load(self.image)

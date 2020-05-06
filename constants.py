@@ -3,9 +3,13 @@ SPEED = 50  # 30
 CAR_VELOCITY = 8
 TIME_DELAY = 30
 CAR_PROTRUDE = 10  # Defines how many pixels of car can protrude over the way
+NUMBER_OF_OBSTACLES = 2
 
 WAY_LENGTH = 100
 ROAD_WIDTH = 300
+
+CAR_WIDTH = 50
+CAR_LENGTH = 98
 
 MAP_LENGTH = 100  # When "car" is approaching to end of map, it's being extended by next value of MAP_LENGTH,
 # so actually the road length is infinite

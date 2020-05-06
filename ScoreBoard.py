@@ -1,12 +1,12 @@
 import pygame
 import color
-import constants as c
+from constants import *
 
 class Score:
     score = 0
 
     pygame.font.init()
-    score_font = pygame.font.SysFont('Comic Sans MS', c.SCORE_FONT)
+    score_font = pygame.font.SysFont('Comic Sans MS', SCORE_FONT)
 
     def show(self):
         self.score += 1
