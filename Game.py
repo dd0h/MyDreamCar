@@ -7,7 +7,7 @@ from constants import *
 
 
 class Game:
-    window = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_LENGTH))
+    window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
     score_board = Score()
 
     def displayThatsOver(self, score):

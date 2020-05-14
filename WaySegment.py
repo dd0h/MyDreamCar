@@ -3,9 +3,9 @@ import color
 from constants import *
 
 class WaySegment:
-    x_l = (WINDOW_HEIGHT - ROAD_WIDTH) / 2 # Up left corner position
+    x_l = (WINDOW_WIDTH - ROAD_WIDTH) / 2 # Up left corner position
     x_r = ROAD_WIDTH + ROAD_BORDER_SIZE  # Up right corner position
-    window = pygame.display.set_mode((WINDOW_HEIGHT, WINDOW_LENGTH))
+    window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
     def __init__(self, y, x):
         self.x_l += x

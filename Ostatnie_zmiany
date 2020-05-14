@@ -7,5 +7,8 @@ Progresywna zmiana ostrości zakrętów (Im dłużej trwa gra tym bardziej szale
 Zderzenie z przeszkodą = Game Over
 Nowe modele samochodów. Dla samochodów trzecich model jest losowany
 
-todo
-Generator przeszkód
+
+todo ogar tworzenie tych samochodów, żeby nie tak gęsto
+todo Przeszkody znikają po wypadnięciu z trasy
+todo co raz więcej samochodów, im większy score
+
