@@ -1,47 +1,47 @@
 from random import randrange
 
-from ObstacleGenerator import ObstacleGenerator
-from constants import *
-from WaySegment import WaySegment
-from Obstacle import Obstacle
-from MapGenerator import MapGenerator
+from Classes import ObstacleGenerator
+import constants as c
+from Classes import WaySegment
+from Classes import Obstacle
+from Classes import MapGenerator
 
 
 class Road:
 
     def __init__(self, score):
-        self.ws = [WaySegment(WAY_LENGTH * i, 0) for i in range(WAY_SEGMENT_FIRST, WAY_SEGMENT_LAST)]
+        self.ws = [WaySegment.WaySegment(c.WAY_LENGTH * i, 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
 
-        self.obstacleGenerator = ObstacleGenerator(score)
-        self.obstacles = [self.obstacleGenerator.generate() for i in range(NUMBER_OF_OBSTACLES)]
+        self.obstacleGenerator = ObstacleGenerator.ObstacleGenerator(score)
+        self.obstacles = [self.obstacleGenerator.generate() for i in range(c.NUMBER_OF_OBSTACLES)]
 
-        self.map = MapGenerator(score)
+        self.map = MapGenerator.MapGenerator(score)
         self.map.generate(start_point=0)
 
     def drawRoad(self, car):
 
         #todo ogar tworzenie tych samochodów, żeby nie tak gęsto
-        x = randrange(0, NUMBER_OF_OBSTACLES, 1)
-        if self.obstacles[x].y > WINDOW_HEIGHT:
-            i = WAY_SEGMENT_FIRST
+        x = randrange(0, c.NUMBER_OF_OBSTACLES, 1)
+        if self.obstacles[x].y > c.WINDOW_HEIGHT:
+            i = c.WAY_SEGMENT_FIRST
             self.obstacles[x].randomizePosition(self.ws[i].x_l, self.ws[i].x_r + self.ws[i].x_l - car.width)
 
-        for i in range(WAY_SEGMENT_FIRST, WAY_SEGMENT_LAST):
-            if self.ws[i].y > WINDOW_HEIGHT:
-                self.ws[i] = WaySegment(-WAY_LENGTH, self.map.getNextMapPoint())
+        for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
+            if self.ws[i].y > c.WINDOW_HEIGHT:
+                self.ws[i] = WaySegment.WaySegment(-c.WAY_LENGTH, self.map.getNextMapPoint())
             self.ws[i].drawWay()
-            self.ws[i].y += SPEED
+            self.ws[i].y += c.SPEED
 
         for obstacle in self.obstacles:
             obstacle.display()
 
     def outOfTheRoad(self, car):
-        for i in range(WAY_SEGMENT_FIRST, WAY_SEGMENT_LAST):
+        for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
             if car.y <= self.ws[i].y and self.ws[i - 1].outOfTheWaySegment(car):
                 return True
 
     def crash(self, car):
-        for i in range(NUMBER_OF_OBSTACLES):
+        for i in range(c.NUMBER_OF_OBSTACLES):
             if (
                     (self.obstacles[i].x < car.x < self.obstacles[i].x + self.obstacles[i].width
                      and self.obstacles[i].y < car.y < self.obstacles[i].y + self.obstacles[i].length)

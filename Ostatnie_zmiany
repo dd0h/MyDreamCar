@@ -1,17 +1,12 @@
-done
-Fixed ten bug z grafiką
-Generator drogi
-Uproszczony kod
-Modyfikacja generatora drogi, tak aby nigdy się nie skończyła
-Progresywna zmiana ostrości zakrętów (Im dłużej trwa gra tym bardziej szaleje droga)
-Zderzenie z przeszkodą = Game Over
-Nowe modele samochodów. Dla samochodów trzecich model jest losowany
 
+Zmiany które były wymogiem w  "Jak zaliczyć projekt z Pythona"
 
 todo ogar tworzenie tych samochodów, żeby nie tak gęsto
 todo Przeszkody znikają po wypadnięciu z trasy
 todo co raz więcej samochodów, im większy score
-todo testy
 
-todo wrzucić na mastera razem z gitignorem bez zbędnych folderów
+todo testy
+todo docstringi
+
+todo wrzucić na mastera
 

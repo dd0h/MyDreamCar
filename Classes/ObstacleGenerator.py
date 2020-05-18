@@ -1,5 +1,4 @@
-from Obstacle import *
-from random import *
+from Classes import Obstacle
 
 class ObstacleGenerator:
 
@@ -7,4 +6,4 @@ class ObstacleGenerator:
         self.score = score
 
     def generate(self):
-        return Obstacle()
+        return Obstacle.Obstacle()
