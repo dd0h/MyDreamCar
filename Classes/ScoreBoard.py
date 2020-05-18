@@ -2,7 +2,7 @@ import pygame
 import color
 import constants as c
 
-class Score:
+class ScoreBoard:
     score = 0
 
     pygame.font.init()

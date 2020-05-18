@@ -10,34 +10,30 @@ from Classes import MapGenerator
 class Road:
 
     def __init__(self, score):
-        self.ws = [WaySegment.WaySegment(c.WAY_LENGTH * i, 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
+        self.way_segments = [WaySegment.WaySegment(c.WAY_LENGTH * i, 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
 
         self.obstacleGenerator = ObstacleGenerator.ObstacleGenerator(score)
-        self.obstacles = [self.obstacleGenerator.generate() for i in range(c.NUMBER_OF_OBSTACLES)]
+        self.obstacles = [self.obstacleGenerator.createObstacle() for i in range(c.NUMBER_OF_OBSTACLES)]
 
         self.map = MapGenerator.MapGenerator(score)
         self.map.generate(start_point=0)
 
     def drawRoad(self, car):
 
-        #todo ogar tworzenie tych samochodów, żeby nie tak gęsto
-        x = randrange(0, c.NUMBER_OF_OBSTACLES, 1)
-        if self.obstacles[x].y > c.WINDOW_HEIGHT:
-            i = c.WAY_SEGMENT_FIRST
-            self.obstacles[x].randomizePosition(self.ws[i].x_l, self.ws[i].x_r + self.ws[i].x_l - car.width)
+        self.obstacleGenerator.generate(self.obstacles, self.way_segments)
 
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
-            if self.ws[i].y > c.WINDOW_HEIGHT:
-                self.ws[i] = WaySegment.WaySegment(-c.WAY_LENGTH, self.map.getNextMapPoint())
-            self.ws[i].drawWay()
-            self.ws[i].y += c.SPEED
+            if self.way_segments[i].y > c.WINDOW_HEIGHT:
+                self.way_segments[i] = WaySegment.WaySegment(-c.WAY_LENGTH, self.map.getNextMapPoint())
+            self.way_segments[i].drawWay()
+            self.way_segments[i].y += c.ROAD_SPEED
 
         for obstacle in self.obstacles:
             obstacle.display()
 
     def outOfTheRoad(self, car):
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
-            if car.y <= self.ws[i].y and self.ws[i - 1].outOfTheWaySegment(car):
+            if car.y <= self.way_segments[i].y and self.way_segments[i - 1].outOfTheWaySegment(car):
                 return True
 
     def crash(self, car):

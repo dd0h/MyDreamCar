@@ -1,14 +1,14 @@
 import pygame
 from Classes import Car
 from Classes import Road
-from Classes import ScoreBoard as Score
+from Classes import ScoreBoard
 import color
 import constants as c
 
 
 class Game:
     window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
-    score_board = Score.Score()
+    score_board = ScoreBoard.ScoreBoard()
 
     def displayThatsOver(self, score):
         self.window.fill(color.WHITE)
@@ -57,9 +57,8 @@ class Game:
 
             road.drawRoad(car)
 
-            if road.outOfTheRoad(car) or road.crash(car):
-            # if road.outOfTheRoad(car):
-                return self.Over(self.score_board.getScore())
+            # if road.outOfTheRoad(car) or road.crash(car):
+            #     return self.Over(self.score_board.getScore())
 
             self.window.blit(car.display(), (car.x, car.y))
 
