@@ -17,5 +17,7 @@ class ObstacleGenerator:
             which_one = randrange(0, c.NUMBER_OF_OBSTACLES, 1)
             if obstacles[which_one].y > c.WINDOW_HEIGHT:
                 i = c.WAY_SEGMENT_FIRST
-                obstacles[which_one].randomizePosition(way_segments[i].x_l, way_segments[i].x_r + way_segments[i].x_l - c.CAR_WIDTH)
+                bound_left = way_segments[i].x_l
+                bound_right = way_segments[i].x_r + way_segments[i].x_l - c.CAR_WIDTH
+                obstacles[which_one].randomizePosition(bound_left, bound_right)
                 obstacles[which_one].makeFaster(math.log(self.score.getScore(), c.OBSTACLES_ACCELERATION_COEFFICIENT))

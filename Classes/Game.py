@@ -1,5 +1,5 @@
 import pygame
-from Classes import Car
+from Classes import MyCar
 from Classes import Road
 from Classes import ScoreBoard
 import color
@@ -41,7 +41,7 @@ class Game:
 
         self.score_board.setScore(0)
         road = Road.Road(self.score_board)
-        car = Car.Car()
+        car = MyCar.MyCar()
 
         run = True
         while run:
@@ -60,7 +60,7 @@ class Game:
             # if road.outOfTheRoad(car) or road.crash(car):
             #     return self.Over(self.score_board.getScore())
 
-            self.window.blit(car.display(), (car.x, car.y))
+            car.display()
 
             self.window.blit(self.score_board.show(), (0, 0))
 

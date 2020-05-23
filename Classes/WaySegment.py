@@ -13,7 +13,7 @@ class WaySegment:
 
     def drawWay(self):
         way = (self.x_l, self.y, self.x_r, c.WAY_LENGTH)
-        pygame.draw.rect(self.window, color.WHITE, way)
+        pygame.draw.rect(self.window, color.GRAY, way)
         left_border_line = (self.x_l, self.y, c.ROAD_BORDER_SIZE, c.WAY_LENGTH)
         right_border_line = (self.x_l + c.ROAD_WIDTH, self.y, c.ROAD_BORDER_SIZE, c.WAY_LENGTH)
         pygame.draw.rect(self.window, color.BLACK, left_border_line)

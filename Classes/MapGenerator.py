@@ -4,9 +4,8 @@ import math
 
 class MapGenerator:
 
-    current_map_point = 0
-
     def __init__(self, score):
+        self.current_map_point = 0
         self.map_length = c.MAP_LENGTH
         self.score = score
 
@@ -15,20 +14,20 @@ class MapGenerator:
         current_segment = 0
 
         while current_segment <= self.map_length - c.SAFE_EXCESS:
-            howMuchSegmentsToSide = random.randrange(1, 20, 1)
-            max_curvature = math.log(self.score.getScore() + 1, 7)
-            if max_curvature > 15:
-                max_curvature = 15
+            how_much_segments_to_side = random.randrange(c.MIN_SEGMENTS_TO_SIDE, c.MAX_SEGMENTS_TO_SIDE, 1)
+            max_curvature = math.log(self.score.getScore() + 1, c.MAX_CURVATURE_COEFFICIENT)
+            if max_curvature > c.MAX_CURVATURE:
+                max_curvature = c.MAX_CURVATURE
             curvature = round(random.uniform(-max_curvature, max_curvature), 1)
 
-            for j in range(current_segment, current_segment + howMuchSegmentsToSide):
-                if current_segment + howMuchSegmentsToSide <= self.map_length:
+            for j in range(current_segment, current_segment + how_much_segments_to_side):
+                if current_segment + how_much_segments_to_side <= self.map_length:
                     while not (
                             c.MAX_LEFT_DEVIATION_OF_ROAD < self.map_points[j] + curvature < c.MAX_RIGHT_DEVIATION_OF_ROAD):
-                        curvature = random.randrange(0, 5, 1)
+                        curvature = round(random.uniform(-max_curvature, max_curvature), 1)
                     self.map_points[j + 1] = self.map_points[j] + curvature
 
-            current_segment += howMuchSegmentsToSide
+            current_segment += how_much_segments_to_side
 
     def getNextMapPoint(self):
         if self.current_map_point > self.map_length - c.SAFE_EXCESS:

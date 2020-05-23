@@ -2,7 +2,7 @@ import pygame
 from Classes import Game
 
 
-def Main():
+def main():
     pygame.init()
     pygame.font.init()
     pygame.display.set_caption("MyDreamCar Beta v21.37")
@@ -14,4 +14,4 @@ def Main():
 
 
 if __name__ == '__main__':
-    Main()
+    main()

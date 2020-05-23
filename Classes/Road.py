@@ -12,15 +12,15 @@ class Road:
     def __init__(self, score):
         self.way_segments = [WaySegment.WaySegment(c.WAY_LENGTH * i, 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
 
-        self.obstacleGenerator = ObstacleGenerator.ObstacleGenerator(score)
-        self.obstacles = [self.obstacleGenerator.createObstacle() for i in range(c.NUMBER_OF_OBSTACLES)]
+        self.obstacle_generator = ObstacleGenerator.ObstacleGenerator(score)
+        self.obstacles = [self.obstacle_generator.createObstacle() for i in range(c.NUMBER_OF_OBSTACLES)]
 
         self.map = MapGenerator.MapGenerator(score)
         self.map.generate(start_point=0)
 
     def drawRoad(self, car):
 
-        self.obstacleGenerator.generate(self.obstacles, self.way_segments)
+        self.obstacle_generator.generate(self.obstacles, self.way_segments)
 
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
             if self.way_segments[i].y > c.WINDOW_HEIGHT:
@@ -29,12 +29,15 @@ class Road:
             self.way_segments[i].y += c.ROAD_SPEED
 
         for obstacle in self.obstacles:
+            if self.outOfTheRoad(obstacle) or self.crash(obstacle):
+                obstacle.reset()
             obstacle.display()
 
     def outOfTheRoad(self, car):
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
             if car.y <= self.way_segments[i].y and self.way_segments[i - 1].outOfTheWaySegment(car):
                 return True
+        return False
 
     def crash(self, car):
         for i in range(c.NUMBER_OF_OBSTACLES):
@@ -53,3 +56,4 @@ class Road:
                         and self.obstacles[i].y < car.y + car.length < self.obstacles[i].y + self.obstacles[i].length)
             ):
                 return True
+        return False

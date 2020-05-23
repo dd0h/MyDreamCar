@@ -1,15 +1,15 @@
 import pygame
 import constants as c
 from random import randrange
+from Classes.Car import Car
 
-class Obstacle:
-    window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
+
+class Obstacle(Car):
     image = 'MyDreamCar/img/car1.png'
-    width = c.CAR_WIDTH
-    length = c.CAR_LENGTH
+
     velocity = c.OBSTACLE_STARTING_VELOCITY
 
-    def __init__(self, y=9000, x=9000):
+    def __init__(self, y=c.OBSTACLE_START_POINT, x=c.OBSTACLE_START_POINT):
         self.x = x
         self.y = y
         self.image = self.setCarStyle()
@@ -32,3 +32,7 @@ class Obstacle:
 
     def makeFaster(self, how_much):
         self.velocity += how_much
+
+    def reset(self):
+        self.x = c.OBSTACLE_START_POINT
+        self.y = c.OBSTACLE_START_POINT
