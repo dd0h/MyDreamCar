@@ -8,9 +8,6 @@ class ObstacleGenerator:
     def __init__(self, score):
         self.score = score
 
-    def createObstacle(self):
-        return Obstacle.Obstacle()
-
     def generate(self, obstacles, way_segments):
         should_I_wait = randrange(0, c.TRAFFIC_COEFFICIENT, 1)
         if not should_I_wait:

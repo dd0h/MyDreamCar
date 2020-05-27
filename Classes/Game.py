@@ -7,8 +7,10 @@ import constants as c
 
 
 class Game:
-    window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
-    score_board = ScoreBoard.ScoreBoard()
+
+    def __init__(self):
+        self.window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
+        self.score_board = ScoreBoard.ScoreBoard()
 
     def displayThatsOver(self, score):
         self.window.fill(color.WHITE)
@@ -57,8 +59,8 @@ class Game:
 
             road.drawRoad(car)
 
-            # if road.outOfTheRoad(car) or road.crash(car):
-            #     return self.Over(self.score_board.getScore())
+            if road.outOfTheRoad(car) or road.crash(car):
+                return self.Over(self.score_board.getScore())
 
             car.display()
 

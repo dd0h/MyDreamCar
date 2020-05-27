@@ -4,6 +4,9 @@ import constants as c
 
 
 class MyCar(Car):
-    image = 'MyDreamCar/img/car7.png'
-    x = c.CAR_STARTING_X
-    y = c.CAR_STARTING_Y
+
+    def __init__(self):
+        self.image = 'MyDreamCar/img/car7.png'
+        self.x = c.CAR_STARTING_X
+        self.y = c.CAR_STARTING_Y
+        super(MyCar, self).__init__()

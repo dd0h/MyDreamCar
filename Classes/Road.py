@@ -10,10 +10,10 @@ from Classes import MapGenerator
 class Road:
 
     def __init__(self, score):
-        self.way_segments = [WaySegment.WaySegment(c.WAY_LENGTH * i, 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
+        self.way_segments = [WaySegment.WaySegment(int(c.WAY_LENGTH * i), 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
 
         self.obstacle_generator = ObstacleGenerator.ObstacleGenerator(score)
-        self.obstacles = [self.obstacle_generator.createObstacle() for i in range(c.NUMBER_OF_OBSTACLES)]
+        self.obstacles = [Obstacle.Obstacle() for i in range(c.NUMBER_OF_OBSTACLES)]
 
         self.map = MapGenerator.MapGenerator(score)
         self.map.generate(start_point=0)
@@ -33,6 +33,7 @@ class Road:
                 obstacle.reset()
             obstacle.display()
 
+
     def outOfTheRoad(self, car):
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
             if car.y <= self.way_segments[i].y and self.way_segments[i - 1].outOfTheWaySegment(car):
@@ -44,7 +45,7 @@ class Road:
             if (
                     (self.obstacles[i].x < car.x < self.obstacles[i].x + self.obstacles[i].width
                      and self.obstacles[i].y < car.y < self.obstacles[i].y + self.obstacles[i].length)
-                    or (self.obstacles[i].x < car.x + car.width < self.obstacles[i].x + self.obstacles[i].width
+                    or (self.obstacles[i].x < car.x + car.width <= self.obstacles[i].x + self.obstacles[i].width
                         and self.obstacles[i].y < car.y < self.obstacles[i].y + self.obstacles[i].length)
                     or (self.obstacles[i].x < car.x < self.obstacles[i].x + self.obstacles[i].width
                         and self.obstacles[i].y < car.y + car.length < self.obstacles[i].y + self.obstacles[i].length)

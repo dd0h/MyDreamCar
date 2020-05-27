@@ -5,18 +5,18 @@ from Classes.Car import Car
 
 
 class Obstacle(Car):
-    image = 'MyDreamCar/img/car1.png'
-
-    velocity = c.OBSTACLE_STARTING_VELOCITY
 
     def __init__(self, y=c.OBSTACLE_START_POINT, x=c.OBSTACLE_START_POINT):
+        self.image = 'MyDreamCar/img/car1.png'
         self.x = x
         self.y = y
         self.image = self.setCarStyle()
+        self.velocity = c.OBSTACLE_STARTING_VELOCITY
+        super(Obstacle, self).__init__()
 
     def display(self,):
         self.y += self.velocity
-        return self.window.blit(pygame.image.load(self.image), (self.x, self.y))
+        return self.window.blit(pygame.image.load(self.image), (int(self.x), int(self.y)))
 
     def setCarStyle(self):
         img_number = randrange(0, 10, 1)
