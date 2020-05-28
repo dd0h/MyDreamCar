@@ -15,7 +15,7 @@ class MapGenerator:
 
         while current_segment <= self.map_length - c.SAFE_EXCESS:
             how_much_segments_to_side = random.randrange(c.MIN_SEGMENTS_TO_SIDE, c.MAX_SEGMENTS_TO_SIDE, 1)
-            max_curvature = math.log(self.score.getScore() + 1, c.MAX_CURVATURE_COEFFICIENT)
+            max_curvature = math.log(self.score.get_score() + 1, c.MAX_CURVATURE_COEFFICIENT)
             if max_curvature > c.MAX_CURVATURE:
                 max_curvature = c.MAX_CURVATURE
             curvature = round(random.uniform(-max_curvature, max_curvature), 1)
@@ -29,7 +29,7 @@ class MapGenerator:
 
             current_segment += how_much_segments_to_side
 
-    def getNextMapPoint(self):
+    def get_next_map_point(self):
         if self.current_map_point > self.map_length - c.SAFE_EXCESS:
             self.generate(self.map_points[self.current_map_point])
             self.current_map_point = 0

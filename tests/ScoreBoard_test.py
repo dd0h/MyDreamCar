@@ -14,11 +14,11 @@ class ScoreBoard_test(unittest.TestCase):
     def test_show(self):
         self.assertIsNotNone(self.score_board.show())
 
-    def test_getScore(self):
-        self.assertIsInstance(self.score_board.getScore(), int)
+    def test_get_score(self):
+        self.assertIsInstance(self.score_board.get_score(), int)
 
-    def test_setScore(self):
-        self.assertIsNone(self.score_board.setScore(0))
+    def test_set_score(self):
+        self.assertIsNone(self.score_board.set_score(0))
 
 
 if __name__ == '__main__':

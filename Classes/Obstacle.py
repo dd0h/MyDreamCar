@@ -10,7 +10,7 @@ class Obstacle(Car):
         self.image = 'MyDreamCar/img/car1.png'
         self.x = x
         self.y = y
-        self.image = self.setCarStyle()
+        self.image = self.set_car_style()
         self.velocity = c.OBSTACLE_STARTING_VELOCITY
         super(Obstacle, self).__init__()
 
@@ -18,19 +18,19 @@ class Obstacle(Car):
         self.y += self.velocity
         return self.window.blit(pygame.image.load(self.image), (int(self.x), int(self.y)))
 
-    def setCarStyle(self):
+    def set_car_style(self):
         img_number = randrange(0, 10, 1)
         url = 'MyDreamCar/img/car'
         url += str(img_number)
         url += '.png'
         return url
 
-    def randomizePosition(self, bound_left, bound_right):
+    def randomize_position(self, bound_left, bound_right):
         self.x = randrange(int(bound_left), int(bound_right), 1)
         self.y = -c.CAR_LENGTH
-        self.setCarStyle()
+        self.set_car_style()
 
-    def makeFaster(self, how_much):
+    def make_faster(self, how_much):
         self.velocity += how_much
 
     def reset(self):

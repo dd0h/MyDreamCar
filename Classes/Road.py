@@ -18,25 +18,25 @@ class Road:
         self.map = MapGenerator.MapGenerator(score)
         self.map.generate(start_point=0)
 
-    def drawRoad(self, car):
+    def draw_road(self, car):
 
         self.obstacle_generator.generate(self.obstacles, self.way_segments)
 
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
             if self.way_segments[i].y > c.WINDOW_HEIGHT:
-                self.way_segments[i] = WaySegment.WaySegment(-c.WAY_LENGTH, self.map.getNextMapPoint())
-            self.way_segments[i].drawWay()
+                self.way_segments[i] = WaySegment.WaySegment(-c.WAY_LENGTH, self.map.get_next_map_point())
+            self.way_segments[i].draw_way()
             self.way_segments[i].y += c.ROAD_SPEED
 
         for obstacle in self.obstacles:
-            if self.outOfTheRoad(obstacle) or self.crash(obstacle):
+            if self.out_of_the_road(obstacle) or self.crash(obstacle):
                 obstacle.reset()
             obstacle.display()
 
 
-    def outOfTheRoad(self, car):
+    def out_of_the_road(self, car):
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
-            if car.y <= self.way_segments[i].y and self.way_segments[i - 1].outOfTheWaySegment(car):
+            if car.y <= self.way_segments[i].y and self.way_segments[i - 1].out_of_the_way_segment(car):
                 return True
         return False
 

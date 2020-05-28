@@ -12,7 +12,7 @@ class Game:
         self.window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
         self.score_board = ScoreBoard.ScoreBoard()
 
-    def displayThatsOver(self, score):
+    def display_thats_over(self, score):
         self.window.fill(color.WHITE)
         big_font = pygame.font.SysFont('Comic Sans MS', c.BIG_FONT)
         small_font = pygame.font.SysFont('Comic Sans MS', c.SMALL_FONT)
@@ -25,9 +25,9 @@ class Game:
         self.window.blit(restart_sign, (c.RESTART_SIGN_X, c.RESTART_SIGN_Y))
         pygame.display.update()
 
-    def Over(self, score):
+    def over(self, score):
 
-        self.displayThatsOver(score)
+        self.display_thats_over(score)
 
         run = False
         while not run:
@@ -37,11 +37,11 @@ class Game:
 
             keys = pygame.key.get_pressed()
             if keys[pygame.K_SPACE]:
-                return self.Run()
+                return self.run()
 
-    def Run(self):
+    def run(self):
 
-        self.score_board.setScore(0)
+        self.score_board.set_score(0)
         road = Road.Road(self.score_board)
         car = MyCar.MyCar()
 
@@ -53,14 +53,14 @@ class Game:
 
             pygame.time.delay(c.TIME_DELAY)
 
-            self.Control(car)
+            self.control(car)
 
             self.window.fill(color.GREEN)
 
-            road.drawRoad(car)
+            road.draw_road(car)
 
-            if road.outOfTheRoad(car) or road.crash(car):
-                return self.Over(self.score_board.getScore())
+            if road.out_of_the_road(car) or road.crash(car):
+                return self.over(self.score_board.get_score())
 
             car.display()
 
@@ -68,7 +68,7 @@ class Game:
 
             pygame.display.update()
 
-    def Control(self, car):
+    def control(self, car):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             car.x -= c.CAR_VELOCITY

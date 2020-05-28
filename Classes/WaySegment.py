@@ -13,7 +13,7 @@ class WaySegment:
         self.x = x
         self.y = y
 
-    def drawWay(self):
+    def draw_way(self):
         way = (int(self.x_l), int(self.y), int(self.x_r), c.WAY_LENGTH)
         pygame.draw.rect(self.window, color.GRAY, way)
         left_border_line = (int(self.x_l), int(self.y), c.ROAD_BORDER_SIZE, c.WAY_LENGTH)
@@ -21,7 +21,7 @@ class WaySegment:
         pygame.draw.rect(self.window, color.BLACK, left_border_line)
         pygame.draw.rect(self.window, color.BLACK, right_border_line)
 
-    def outOfTheWaySegment(self, car):
+    def out_of_the_way_segment(self, car):
         if car.x < self.x_l - c.OUTSIDE_BORDER or car.x > self.x_l + self.x_r - car.width + c.OUTSIDE_BORDER:
             return True
         return False

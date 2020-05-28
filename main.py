@@ -8,7 +8,7 @@ def main():
     pygame.display.set_caption("MyDreamCar Beta v21.37")
 
     game = Game.Game()
-    game.Run()
+    game.run()
 
     pygame.quit()
 

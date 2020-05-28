@@ -18,17 +18,17 @@ class Road_test(unittest.TestCase):
         self.mock_Car.width = c.CAR_WIDTH
         self.mock_Car.length = c.CAR_LENGTH
 
-    def test_drawRoad(self):
-        self.assertIsNone(self.road.drawRoad(self.mock_Car))
+    def test_draw_road(self):
+        self.assertIsNone(self.road.draw_road(self.mock_Car))
 
-    def test_outOfTheRoad(self):
+    def test_out_of_the_road(self):
         self.mock_Car.y = 0
         self.mock_Car.x = 0
-        self.assertTrue(self.road.outOfTheRoad(self.mock_Car))
+        self.assertTrue(self.road.out_of_the_road(self.mock_Car))
 
         self.mock_Car.y = c.CAR_STARTING_X
         self.mock_Car.x = c.CAR_STARTING_Y
-        self.assertFalse(self.road.outOfTheRoad(self.mock_Car))
+        self.assertFalse(self.road.out_of_the_road(self.mock_Car))
 
     def test_crash(self):
 

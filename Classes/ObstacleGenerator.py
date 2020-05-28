@@ -16,5 +16,5 @@ class ObstacleGenerator:
                 i = c.WAY_SEGMENT_FIRST
                 bound_left = way_segments[i].x_l
                 bound_right = way_segments[i].x_r + way_segments[i].x_l - c.CAR_WIDTH
-                obstacles[which_one].randomizePosition(bound_left, bound_right)
-                obstacles[which_one].makeFaster(math.log(self.score.getScore(), c.OBSTACLES_ACCELERATION_COEFFICIENT))
+                obstacles[which_one].randomize_position(bound_left, bound_right)
+                obstacles[which_one].make_faster(math.log(self.score.get_score(), c.OBSTACLES_ACCELERATION_COEFFICIENT))

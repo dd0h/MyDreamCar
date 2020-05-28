@@ -14,8 +14,8 @@ class ScoreBoard:
         self.score += 1
         return self.score_font.render('score: ' + str(self.score), False, color.BLACK)
 
-    def getScore(self):
+    def get_score(self):
         return self.score
 
-    def setScore(self, score):
+    def set_score(self, score):
         self.score = score
