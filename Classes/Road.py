@@ -19,6 +19,10 @@ class Road:
         self.map.generate(start_point=0)
 
     def draw_road(self, car):
+        """
+        Displays way segments and obstacles on screen.
+        Also checks if obstacles fall out of the road or overlap and calls proper methods to eliminate these problems.
+        """
 
         self.obstacle_generator.generate(self.obstacles, self.way_segments)
 
@@ -35,12 +39,14 @@ class Road:
 
 
     def out_of_the_road(self, car):
+        """Checks if car had fallen out of the road."""
         for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST):
             if car.y <= self.way_segments[i].y and self.way_segments[i - 1].out_of_the_way_segment(car):
                 return True
         return False
 
     def crash(self, car):
+        """Checks if car had contact with obstacles."""
         for i in range(c.NUMBER_OF_OBSTACLES):
             if (
                     (self.obstacles[i].x < car.x < self.obstacles[i].x + self.obstacles[i].width

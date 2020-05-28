@@ -43,7 +43,7 @@ CAR_STARTING_Y = 390
 
 # Obstacle
 OBSTACLE_STARTING_VELOCITY = 4.0
-OBSTACLE_START_POINT = 9000
+OBSTACLE_START_POINT = 9000  # It's a temporary position point, which is replaced by randomize_position() method
 
 # Obstacle & Car
 CAR_LENGTH = 98

@@ -13,6 +13,7 @@ class Game:
         self.score_board = ScoreBoard.ScoreBoard()
 
     def display_thats_over(self, score):
+        """Displays "thats over" window."""
         self.window.fill(color.WHITE)
         big_font = pygame.font.SysFont('Comic Sans MS', c.BIG_FONT)
         small_font = pygame.font.SysFont('Comic Sans MS', c.SMALL_FONT)
@@ -26,7 +27,7 @@ class Game:
         pygame.display.update()
 
     def over(self, score):
-
+        """Calls display_thats_over() and restarts game after SPACE key pressed."""
         self.display_thats_over(score)
 
         run = False
@@ -40,7 +41,7 @@ class Game:
                 return self.run()
 
     def run(self):
-
+        """Initializes core components and manages them."""
         self.score_board.set_score(0)
         road = Road.Road(self.score_board)
         car = MyCar.MyCar()
@@ -69,6 +70,7 @@ class Game:
             pygame.display.update()
 
     def control(self, car):
+        """Changes car position according to key pressed"""
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             car.x -= c.CAR_VELOCITY

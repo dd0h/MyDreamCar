@@ -11,4 +11,5 @@ class Car:
         self.length = c.CAR_LENGTH
 
     def display(self):
+        """Displays car image on the screen."""
         return self.window.blit(pygame.image.load(self.image), (self.x, self.y))

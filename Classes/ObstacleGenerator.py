@@ -9,6 +9,10 @@ class ObstacleGenerator:
         self.score = score
 
     def generate(self, obstacles, way_segments):
+        """
+        "Brings back to life" an obstacle which is behind screen by randomizing it's new position.
+        Also increases it's velocity
+        """
         should_I_wait = randrange(0, c.TRAFFIC_COEFFICIENT, 1)
         if not should_I_wait:
             which_one = randrange(0, c.NUMBER_OF_OBSTACLES, 1)

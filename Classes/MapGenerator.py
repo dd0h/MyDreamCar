@@ -10,6 +10,7 @@ class MapGenerator:
         self.score = score
 
     def generate(self, start_point):
+        """Fills the table self.map_points with points corresponding to the position of the way segment on the map."""
         self.map_points = [start_point for i in range(self.map_length)]
         current_segment = 0
 
@@ -30,6 +31,7 @@ class MapGenerator:
             current_segment += how_much_segments_to_side
 
     def get_next_map_point(self):
+        """Returns single map point and calls generate() to refill array with new map points when the end of array is being reached."""
         if self.current_map_point > self.map_length - c.SAFE_EXCESS:
             self.generate(self.map_points[self.current_map_point])
             self.current_map_point = 0

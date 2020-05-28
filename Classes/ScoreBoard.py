@@ -11,6 +11,7 @@ class ScoreBoard:
         self.score_font = pygame.font.SysFont('Comic Sans MS', c.SCORE_FONT)
 
     def show(self):
+        """Increases score and displays it on the screen."""
         self.score += 1
         return self.score_font.render('score: ' + str(self.score), False, color.BLACK)
 
