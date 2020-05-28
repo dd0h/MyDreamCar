@@ -71,3 +71,4 @@ ROAD_BORDER_SIZE = 10
 
 # WaySegment & Road
 WAY_LENGTH = 100
+OUTSIDE_BORDER = 10  # Defines how many pixels out of way segment a car can exceed
