@@ -1,6 +1,5 @@
-import pygame
-
 import constants as c
+import pygame
 
 
 class Car:

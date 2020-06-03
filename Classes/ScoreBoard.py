@@ -13,7 +13,7 @@ class ScoreBoard:
     def show(self):
         """Increases score and displays it on the screen."""
         self.score += 1
-        return self.score_font.render('score: ' + str(self.score), False, color.BLACK)
+        return self.score_font.render('score: ' + str(self.score), False, color.BACKGROUND_COLOR)
 
     def get_score(self):
         return self.score

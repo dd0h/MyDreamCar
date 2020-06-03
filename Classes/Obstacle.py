@@ -1,7 +1,8 @@
-import pygame
 import constants as c
-from random import randrange
+import pygame
+
 from Classes.Car import Car
+from random import randrange
 
 
 class Obstacle(Car):
@@ -14,7 +15,7 @@ class Obstacle(Car):
         self.velocity = c.OBSTACLE_STARTING_VELOCITY
         super(Obstacle, self).__init__()
 
-    def display(self,):
+    def display(self, ):
         """Changes y position of obstacle and displays obstacle image on the screen."""
         self.y += self.velocity
         return self.window.blit(pygame.image.load(self.image), (int(self.x), int(self.y)))

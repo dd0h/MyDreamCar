@@ -1,11 +1,11 @@
 import pygame
+
 from Classes import Game
 
 
 def main():
     pygame.init()
-    pygame.font.init()
-    pygame.display.set_caption("MyDreamCar Beta v21.37")
+    pygame.display.set_caption("MyDreamCar v.0.97")
 
     game = Game.Game()
     game.run()

@@ -1,16 +1,16 @@
-from random import randrange
-
-from Classes import ObstacleGenerator
 import constants as c
-from Classes import WaySegment
-from Classes import Obstacle
+
 from Classes import MapGenerator
+from Classes import Obstacle
+from Classes import ObstacleGenerator
+from Classes import WaySegment
 
 
 class Road:
 
     def __init__(self, score):
-        self.way_segments = [WaySegment.WaySegment(int(c.WAY_LENGTH * i), 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
+        self.way_segments = \
+            [WaySegment.WaySegment(int(c.WAY_LENGTH * i), 0) for i in range(c.WAY_SEGMENT_FIRST, c.WAY_SEGMENT_LAST)]
 
         self.obstacle_generator = ObstacleGenerator.ObstacleGenerator(score)
         self.obstacles = [Obstacle.Obstacle() for i in range(c.NUMBER_OF_OBSTACLES)]

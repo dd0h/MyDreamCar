@@ -1,6 +1,6 @@
-import pygame
 import color
 import constants as c
+import pygame
 
 
 class WaySegment:
@@ -16,11 +16,11 @@ class WaySegment:
     def draw_way(self):
         """Displays a single way segment on the screen."""
         way = (int(self.x_l), int(self.y), int(self.x_r), c.WAY_LENGTH)
-        pygame.draw.rect(self.window, color.GRAY, way)
+        pygame.draw.rect(self.window, color.ROAD_COLOR, way)
         left_border_line = (int(self.x_l), int(self.y), c.ROAD_BORDER_SIZE, c.WAY_LENGTH)
         right_border_line = (int(self.x_l) + c.ROAD_WIDTH, self.y, c.ROAD_BORDER_SIZE, c.WAY_LENGTH)
-        pygame.draw.rect(self.window, color.BLACK, left_border_line)
-        pygame.draw.rect(self.window, color.BLACK, right_border_line)
+        pygame.draw.rect(self.window, color.BACKGROUND_COLOR, left_border_line)
+        pygame.draw.rect(self.window, color.BACKGROUND_COLOR, right_border_line)
 
     def out_of_the_way_segment(self, car):
         """Checks if the car has gone off the way segment"""

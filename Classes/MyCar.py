@@ -1,6 +1,6 @@
-import pygame
-from Classes.Car import Car
 import constants as c
+
+from Classes.Car import Car
 
 
 class MyCar(Car):

@@ -1,7 +1,8 @@
-import math
-from random import randrange
 import constants as c
-from Classes import Obstacle
+import math
+
+from random import randrange
+
 
 class ObstacleGenerator:
 
