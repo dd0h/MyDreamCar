@@ -10,7 +10,7 @@ class WaySegment:
         self.x_l = (c.WINDOW_WIDTH - c.ROAD_WIDTH) / 2  # Up left corner position
         self.x_r = c.ROAD_WIDTH + c.ROAD_BORDER_SIZE  # Up right corner position
 
-        self.x = x
+        self.x_l += x
         self.y = y
 
     def draw_way(self):
