@@ -2,15 +2,18 @@ import constants as c
 import math
 import random
 
+from Classes.ScoreBoard import ScoreBoard
+
 
 class MapGenerator:
 
-    def __init__(self, score):
-        self.current_map_point = 0
-        self.map_length = c.MAP_LENGTH
-        self.score = score
+    def __init__(self, score: ScoreBoard) -> None:
+        self.current_map_point: int = 0
+        self.map_length: int = c.MAP_LENGTH
+        self.score: ScoreBoard = score
+        self.map_points: [int] = []
 
-    def generate(self, start_point):
+    def generate(self, start_point: int) -> None:
         """Fills the table self.map_points with points corresponding to the position of the way segment on the map."""
         self.map_points = [start_point for i in range(self.map_length)]
         current_segment = 0
@@ -32,7 +35,7 @@ class MapGenerator:
 
             current_segment += how_much_segments_to_side
 
-    def get_next_map_point(self):
+    def get_next_map_point(self) -> int:
         """
         Returns single map point and calls generate() to refill array with new map points
         when the end of array is being reached.
