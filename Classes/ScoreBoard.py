@@ -20,3 +20,4 @@ class ScoreBoard:
 
     def set_score(self, score: int) -> None:
         self.score = score
+
