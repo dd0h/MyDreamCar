@@ -8,12 +8,12 @@ from random import randrange
 class Obstacle(Car):
 
     def __init__(self, y: int = c.OBSTACLE_START_POINT, x: int = c.OBSTACLE_START_POINT) -> None:
+        super(Obstacle, self).__init__()
         self.image: str = 'MyDreamCar/img/car1.png'
         self.x: int = x
         self.y: int = y
         self.image: str = self.set_car_style()
         self.velocity: float = c.OBSTACLE_STARTING_VELOCITY
-        super(Obstacle, self).__init__()
 
     def display(self) -> pygame.display:
         """Changes y position of obstacle and displays obstacle image on the screen."""
