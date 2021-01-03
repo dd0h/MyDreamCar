@@ -42,6 +42,9 @@ class Game:
             if keys[pygame.K_SPACE]:
                 return self.run()
 
+            if self.end():
+                break
+
     def run(self) -> None:
         """Initializes core components and manages them."""
         self.score_board.set_score(1)
@@ -71,6 +74,9 @@ class Game:
 
             pygame.display.update()
 
+            if self.end():
+                run = False
+
     def control(self, my_car: MyCar) -> None:
         """Changes car position according to key pressed"""
         keys = pygame.key.get_pressed()
@@ -78,4 +84,11 @@ class Game:
             my_car.x -= c.CAR_VELOCITY
         if keys[pygame.K_RIGHT]:
             my_car.x += c.CAR_VELOCITY
+
+    def end(self) -> bool:
+        """Quits the game, when "escape" button is pressed"""
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:
+            return True
+        return False
 
