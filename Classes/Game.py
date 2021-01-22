@@ -10,11 +10,11 @@ from Classes import ScoreBoard
 
 class Game:
 
-    def __init__(self):
-        self.window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
-        self.score_board = ScoreBoard.ScoreBoard()
+    def __init__(self) -> None:
+        self.window: pygame.display = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
+        self.score_board: ScoreBoard = ScoreBoard.ScoreBoard()
 
-    def display_thats_over(self, score):
+    def display_thats_over(self) -> None:
         """Displays "thats over" window."""
         self.window.fill(color.BORDER_COLOR)
         big_font = pygame.font.SysFont('Comic Sans MS', c.BIG_FONT)
@@ -28,9 +28,9 @@ class Game:
         self.window.blit(restart_sign, (c.RESTART_SIGN_X, c.RESTART_SIGN_Y))
         pygame.display.update()
 
-    def over(self, score):
+    def over(self) -> None:
         """Calls display_thats_over() and restarts game after SPACE key pressed."""
-        self.display_thats_over(score)
+        self.display_thats_over()
 
         run = False
         while not run:
@@ -42,9 +42,12 @@ class Game:
             if keys[pygame.K_SPACE]:
                 return self.run()
 
-    def run(self):
+            if self.end():
+                break
+
+    def run(self) -> None:
         """Initializes core components and manages them."""
-        self.score_board.set_score(0)
+        self.score_board.set_score(1)
         road = Road.Road(self.score_board)
         car = MyCar.MyCar()
 
@@ -60,10 +63,10 @@ class Game:
 
             self.window.fill(color.GRASS_COLOR)
 
-            road.draw_road(car)
+            road.draw_road()
 
             if road.out_of_the_road(car) or road.crash(car):
-                return self.over(self.score_board.get_score())
+                return self.over()
 
             car.display()
 
@@ -71,11 +74,21 @@ class Game:
 
             pygame.display.update()
 
-    def control(self, car):
+            if self.end():
+                run = False
+
+    def control(self, my_car: MyCar) -> None:
         """Changes car position according to key pressed"""
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            car.x -= c.CAR_VELOCITY
+            my_car.x -= c.CAR_VELOCITY
         if keys[pygame.K_RIGHT]:
-            car.x += c.CAR_VELOCITY
+            my_car.x += c.CAR_VELOCITY
+
+    def end(self) -> bool:
+        """Quits the game, when "escape" button is pressed"""
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:
+            return True
+        return False
 

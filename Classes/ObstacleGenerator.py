@@ -3,13 +3,17 @@ import math
 
 from random import randrange
 
+from Classes.Obstacle import Obstacle
+from Classes.ScoreBoard import ScoreBoard
+from Classes.WaySegment import WaySegment
+
 
 class ObstacleGenerator:
 
-    def __init__(self, score):
-        self.score = score
+    def __init__(self, score) -> None:
+        self.score: ScoreBoard = score
 
-    def generate(self, obstacles, way_segments):
+    def generate(self, obstacles: [Obstacle], way_segments: [WaySegment]) -> None:
         """
         "Brings back to life" an obstacle which is behind screen by randomizing it's new position.
         Also increases it's velocity

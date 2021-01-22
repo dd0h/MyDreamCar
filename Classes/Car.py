@@ -1,14 +1,20 @@
+from abc import ABC, abstractmethod
+
 import constants as c
 import pygame
 
 
-class Car:
+class Car(ABC):
 
-    def __init__(self):
-        self.window = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
-        self.width = c.CAR_WIDTH
-        self.length = c.CAR_LENGTH
+    def __init__(self) -> None:
+        self.window: pygame.display = pygame.display.set_mode((c.WINDOW_WIDTH, c.WINDOW_HEIGHT))
+        self.width: int = c.CAR_WIDTH
+        self.length: int = c.CAR_LENGTH
+        self.x: int = 0
+        self.y: int = 0
+        self.image: str = ""
 
-    def display(self):
+    @abstractmethod
+    def display(self) -> pygame.display:
         """Displays car image on the screen."""
-        return self.window.blit(pygame.image.load(self.image), (self.x, self.y))
+        pass
